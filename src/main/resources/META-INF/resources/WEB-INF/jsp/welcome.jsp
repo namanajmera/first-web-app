@@ -8,6 +8,7 @@
             <p>
                 Your Name:- ${name}
             </p>
+            <p><a href="list-todos">Manage</a> Your Todos</p>
         </div>
     </body>
 </html>
