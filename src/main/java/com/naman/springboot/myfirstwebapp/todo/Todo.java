@@ -10,7 +10,7 @@ public class Todo {
     private int id;
     private String username;
 
-    @Size(min=10,message = "Enter minimum of 10 length")
+//    @Size(min=10,message = "Enter minimum of 10 length")
     private String description;
     private LocalDate targetDate;
     private boolean isDone;
