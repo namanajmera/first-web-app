@@ -8,9 +8,6 @@
             <p>
                 Your Name:- ${name}
             </p>
-            <p>
-                Your Password: ${password}
-            </p>
         </div>
     </body>
 </html>

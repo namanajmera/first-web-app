@@ -34,7 +34,6 @@ public class LoginController {
             return "login";
         }
         modelMap.put("name",name);
-        modelMap.put("password",password);
         return "welcome";
     }
 }
