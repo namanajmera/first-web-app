@@ -14,20 +14,28 @@ import java.util.function.Function;
 public class SpringSecurityConfiguration {
 
     @Bean
-    public InMemoryUserDetailsManager createUserDetailsManager(){
+    public InMemoryUserDetailsManager createUserDetailsManager() {
+        UserDetails userDetails = getUserDetails("naman", "dummy1");
+
+        UserDetails userDetails2 = getUserDetails("hackerNaman", "dummy2");
+
+        UserDetails userDetails3 = getUserDetails("admin", "dummy3");
+
+        return new InMemoryUserDetailsManager(userDetails, userDetails2, userDetails3);
+    }
+
+    private static UserDetails getUserDetails(String username, String password) {
         Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
-        UserDetails userDetails = User.builder()
+        return User.builder()
                 .passwordEncoder(passwordEncoder)
-                .username("naman")
-                .password("dummy")
+                .username(username)
+                .password(password)
                 .roles("USER", "ADMIN")
                 .build();
-
-        return new InMemoryUserDetailsManager(userDetails);
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

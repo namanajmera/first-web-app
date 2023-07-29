@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 public class TodoService {
@@ -20,7 +22,7 @@ public class TodoService {
     }
 
     public List<Todo> findByUserName(String username){
-        return todos;
+        return todos.stream().filter(todo -> todo.getUsername().equalsIgnoreCase(username)).collect(Collectors.toList());
     }
 
     public void addTodo(String username, String description, LocalDate targetDate, boolean done) {
