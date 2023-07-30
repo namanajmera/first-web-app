@@ -1,12 +1,18 @@
 package com.naman.springboot.myfirstwebapp.todo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+@Entity
 public class Todo {
 
+    @Id
+    @GeneratedValue
     private int id;
     private String username;
 
@@ -21,6 +27,10 @@ public class Todo {
         this.description = description;
         this.targetDate = targetDate;
         this.isDone = isDone;
+    }
+
+    public Todo() {
+
     }
 
     public int getId() {
